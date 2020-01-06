@@ -166,33 +166,26 @@ nums
 
 def threeSum(nums):
     nums.sort()
-    print(nums)
-    ret = []
-    index = 0
-    length = len(nums)
-    if length < 3:
-        print(ret)
-        return
-    for i in range(length - 2):
-        if i > 0 and nums[i-1] == nums[i]:
-            continue
-        # 连续相同的数字  会出现相同三元组的情况
-        for j in range(i+1, length -1):
-            if j > i+1 and nums[j-1] == nums[j]:
-                continue
-            remainder = nums[i] + nums[j]
-            if remainder > 0:
-                break
-            for m in range(j+1, length):
-                if remainder > nums[m]:
-                    break
-                if (remainder + nums[m]) == 0:
-                    if m > j+1 and nums[m-1] == nums[m]:
-                        continue
-                    ret.append((nums[i], nums[j], nums[m]))
-    print(ret)
-
-
+    res, k = [], 0
+    for k in range(len(nums) - 2):
+        if nums[k] > 0: break # 1. because of j > i > k.
+        if k > 0 and nums[k] == nums[k - 1]: continue # 2. skip the same `nums[k]`.
+        i, j = k + 1, len(nums) - 1
+        while i < j: # 3. double pointer
+            s = nums[k] + nums[i] + nums[j]
+            if s < 0:
+                i += 1
+                while i < j and nums[i] == nums[i - 1]: i += 1
+            elif s > 0:
+                j -= 1
+                while i < j and nums[j] == nums[j + 1]: j -= 1
+            else:
+                res.append([nums[k], nums[i], nums[j]])
+                i += 1
+                j -= 1
+                while i < j and nums[i] == nums[i - 1]: i += 1
+                while i < j and nums[j] == nums[j + 1]: j -= 1
+    return res
 # In[111]:
 
 
