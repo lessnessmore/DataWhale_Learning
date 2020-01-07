@@ -67,7 +67,10 @@ h22.next = h23
 sol1 = Solution()
 ln1 = sol1.mergeTwoLists(h10, h20)
 
+# **2. 删除指定节点**
 
+# 在python2 和python3场景下区别比较大，不清楚为什么，在python2下执行耗时和耗内存都比较好，
+# 尝试了双指针，效率并不比这个简单方法耗时和内存更少。
 # In[6]:
 
 
