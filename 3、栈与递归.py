@@ -157,7 +157,7 @@ print(fact(5)) # 120
 # In[56]:
 
 
-# 参考连接
+# 参考连接, 没有彻底理解
 # https://github.com/shiinerise/DataStructuresAndAlgorithms/blob/master/3_%E6%A0%88.md
 
 
